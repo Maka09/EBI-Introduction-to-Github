@@ -1,4 +1,5 @@
 #!/bin/sh
+bwa index Saccharomyces_cerevisiae.EF4.68.dna.toplevel.fa
 
 for n in {1..2}
 do
@@ -15,3 +16,4 @@ picard MergeSamFiles INPUT=lane1_sorted.bam INPUT=lane2_sorted.bam OUTPUT=librar
 
 samtools index library.bam
 
+samtools view -C -T Saccharomyces_cerevisiae.EF4.68.dna.toplevel.fa lane${n}_sorted.bam > lane${n}_sorted.cram
